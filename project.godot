@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="NeCota"
-run/main_scene="res://Szenen/Charaktere/Player.tscn"
-config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
+run/main_scene="uid://crlvvch44y3sp"
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 boot_splash/image="res://Grafiken/Depot/Startbild.png"
 config/icon="res://Grafiken/Depot/icon.svg"
 

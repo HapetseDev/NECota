@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://l4lps5bphpfr"]
 
-[ext_resource type="Script" path="res://Skripte/Player/Player.cs" id="1_dearh"]
+[ext_resource type="Script" uid="uid://cypswom7lcabv" path="res://Skripte/Player/Player.cs" id="1_dearh"]
 [ext_resource type="Texture2D" uid="uid://s30p52bvjv30" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_00.png" id="2_p5tu8"]
 [ext_resource type="Texture2D" uid="uid://7gbmdugebpcr" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_01.png" id="3_2gmn5"]
 [ext_resource type="Texture2D" uid="uid://oo33mhg7o27u" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_02.png" id="4_a1ugq"]
@@ -65,19 +65,20 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l0ao3"]
 _data = {
-"Idle": SubResource("Animation_02ta3"),
-"Moving": SubResource("Animation_o26r5"),
-"RESET": SubResource("Animation_3hvuf")
+&"Idle": SubResource("Animation_02ta3"),
+&"Moving": SubResource("Animation_o26r5"),
+&"RESET": SubResource("Animation_3hvuf")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animPlayerNode", "spriteNode")]
 script = ExtResource("1_dearh")
+animPlayerNode = NodePath("AnimationPlayer")
+spriteNode = NodePath("Sprite3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("2_p5tu8")
-script = ExtResource("1_dearh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_l0ao3")
+&"": SubResource("AnimationLibrary_l0ao3")
 }
