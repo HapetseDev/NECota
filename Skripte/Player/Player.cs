@@ -7,7 +7,9 @@ public partial class Player : CharacterBody3D
 	[Export] public AnimationPlayer animPlayerNode;
 	[Export] public Sprite3D spriteNode;
 
-	private Vector2 direction = new();
+	[Export] public StateMachine stateMachineNode;
+
+	public Vector2 direction = new();
 
 
 

@@ -12,4 +12,28 @@ public partial class StateMachine : Node
         currentState.Notification(5001);
     }
 
+    public void SwitchState<T>()
+    {   Node newState = null;    
+        previousState = currentState;
+        foreach (Node state in states)
+        {
+            if (state is T)
+            {
+                newState = state;
+                break;
+            }
+        }
+
+        if (newState == null)
+        {
+            GD.PrintErr("State not found");
+            return;
+        }
+        
+        currentState = newState;
+
+        //previousState.Notification(5002);
+        currentState.Notification(5001);
+    }
+
 }

@@ -3,9 +3,17 @@ using System;
 
 public partial class MoveState : Node
 {
+    private Player characterNode;
     public override void _Ready()
     {
-        
+        characterNode = GetOwner<Player>();
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (characterNode.direction != Vector2.Zero) {
+            characterNode.stateMachineNode.SwitchState<MoveState>();
+         }
     }
 
     public override void _Notification(int what)
@@ -15,7 +23,6 @@ public partial class MoveState : Node
         {
            // Called every time the node is added to the scene.
             // Mit GetOwner<Player>() wird der Player-Knoten geholt
-            Player characterNode = GetOwner<Player>();
             characterNode.animPlayerNode.Play(GameConstants.ANIM_MOVE);
         }
     }
