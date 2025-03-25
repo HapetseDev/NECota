@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://l4lps5bphpfr"]
+[gd_scene load_steps=21 format=3 uid="uid://l4lps5bphpfr"]
 
 [ext_resource type="Script" uid="uid://cypswom7lcabv" path="res://Skripte/Player/Player.cs" id="1_dearh"]
 [ext_resource type="Texture2D" uid="uid://s30p52bvjv30" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_00.png" id="2_p5tu8"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://brk1sku3vs50l" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_09.png" id="11_eh4gj"]
 [ext_resource type="Texture2D" uid="uid://cg8tdjd3ho4s3" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_10.png" id="12_t3yc4"]
 [ext_resource type="Texture2D" uid="uid://cuh5tws2t1ud8" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_11.png" id="13_srpxy"]
+[ext_resource type="Script" uid="uid://dadtfs02ptkxo" path="res://Skripte/Player/IdleState.cs" id="14_qfxsd"]
+[ext_resource type="Script" uid="uid://c4r8nb1bxwhb1" path="res://Skripte/Player/MoveState.cs" id="15_o3lfe"]
+[ext_resource type="Script" uid="uid://huhcsdd458r7" path="res://Skripte/Charaktere/StateMachine.cs" id="16_pi3bs"]
 
 [sub_resource type="Animation" id="Animation_02ta3"]
 resource_name = "Idle"
@@ -82,3 +85,13 @@ texture = ExtResource("2_p5tu8")
 libraries = {
 &"": SubResource("AnimationLibrary_l0ao3")
 }
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("14_qfxsd")
+
+[node name="MoveState" type="Node" parent="."]
+script = ExtResource("15_o3lfe")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("states")]
+script = ExtResource("16_pi3bs")
+states = []
