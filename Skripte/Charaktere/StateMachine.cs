@@ -20,7 +20,7 @@ public partial class StateMachine : Node
             if (state is T)
             {
                 newState = state;
-                break;
+                //break;
             }
         }
 
@@ -30,6 +30,8 @@ public partial class StateMachine : Node
             return;
         }
         
+        currentState.Notification(5002); 
+
         currentState = newState;
 
         //previousState.Notification(5002);
