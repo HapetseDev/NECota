@@ -1,0 +1,99 @@
+[gd_scene load_steps=21 format=3 uid="uid://l4lps5bphpfr"]
+
+[ext_resource type="Script" uid="uid://cypswom7lcabv" path="res://Skripte/Player/Player.cs" id="1_dearh"]
+[ext_resource type="Texture2D" uid="uid://s30p52bvjv30" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_00.png" id="2_p5tu8"]
+[ext_resource type="Texture2D" uid="uid://7gbmdugebpcr" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_01.png" id="3_2gmn5"]
+[ext_resource type="Texture2D" uid="uid://oo33mhg7o27u" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_02.png" id="4_a1ugq"]
+[ext_resource type="Texture2D" uid="uid://htnmxtm16ghw" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_03.png" id="5_mxhft"]
+[ext_resource type="Texture2D" uid="uid://dybdlv40c242x" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_04.png" id="6_kq5ke"]
+[ext_resource type="Texture2D" uid="uid://o45n7sn152as" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_05.png" id="7_0o2nm"]
+[ext_resource type="Texture2D" uid="uid://dgfgs6b7v6ble" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_06.png" id="8_wnt8e"]
+[ext_resource type="Texture2D" uid="uid://v7kt80516srg" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_07.png" id="9_0ou3v"]
+[ext_resource type="Texture2D" uid="uid://dctivbm3vbgei" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_08.png" id="10_xoxca"]
+[ext_resource type="Texture2D" uid="uid://brk1sku3vs50l" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_09.png" id="11_eh4gj"]
+[ext_resource type="Texture2D" uid="uid://cg8tdjd3ho4s3" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_10.png" id="12_t3yc4"]
+[ext_resource type="Texture2D" uid="uid://cuh5tws2t1ud8" path="res://Grafiken/Sprites/Spieler/New Piskel/sprite_11.png" id="13_srpxy"]
+[ext_resource type="Script" uid="uid://dadtfs02ptkxo" path="res://Skripte/Player/IdleState.cs" id="14_qfxsd"]
+[ext_resource type="Script" uid="uid://c4r8nb1bxwhb1" path="res://Skripte/Player/MoveState.cs" id="15_o3lfe"]
+[ext_resource type="Script" uid="uid://huhcsdd458r7" path="res://Skripte/Charaktere/StateMachine.cs" id="16_pi3bs"]
+
+[sub_resource type="Animation" id="Animation_02ta3"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_p5tu8"), ExtResource("3_2gmn5"), ExtResource("4_a1ugq")]
+}
+
+[sub_resource type="Animation" id="Animation_o26r5"]
+resource_name = "Moving"
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_p5tu8"), ExtResource("3_2gmn5"), ExtResource("4_a1ugq"), ExtResource("5_mxhft"), ExtResource("6_kq5ke"), ExtResource("7_0o2nm"), ExtResource("8_wnt8e"), ExtResource("9_0ou3v"), ExtResource("10_xoxca"), ExtResource("11_eh4gj"), ExtResource("12_t3yc4"), ExtResource("13_srpxy"), ExtResource("3_2gmn5")]
+}
+
+[sub_resource type="Animation" id="Animation_3hvuf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_p5tu8")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0ao3"]
+_data = {
+&"Idle": SubResource("Animation_02ta3"),
+&"Moving": SubResource("Animation_o26r5"),
+&"RESET": SubResource("Animation_3hvuf")
+}
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animPlayerNode", "spriteNode", "stateMachineNode")]
+script = ExtResource("1_dearh")
+animPlayerNode = NodePath("AnimationPlayer")
+spriteNode = NodePath("Sprite3D")
+stateMachineNode = NodePath("StateMachine")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("2_p5tu8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l0ao3")
+}
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("14_qfxsd")
+
+[node name="MoveState" type="Node" parent="."]
+script = ExtResource("15_o3lfe")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("currentState", "states")]
+script = ExtResource("16_pi3bs")
+currentState = NodePath("../IdleState")
+states = [NodePath("../IdleState"), NodePath("../MoveState")]

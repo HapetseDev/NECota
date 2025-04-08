@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://crlvvch44y3sp"]
+
+[ext_resource type="Script" uid="uid://oyu5tf71wdob" path="res://Skripte/Levels/Main.cs" id="1_p54q6"]
+[ext_resource type="PackedScene" uid="uid://l4lps5bphpfr" path="res://Szenen/Charaktere/Player.tscn" id="2_grnn1"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_p54q6")
+
+[node name="Player" parent="." instance=ExtResource("2_grnn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000452161, 0.00127429, -0.00273961)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999999, -0.00117552, -0.00118721, 0.00122044, 0.999255, 0.0385607, 0.00114098, -0.0385621, 0.999256, -0.0309972, 0.0751126, 0.932268)
+
+[node name="FogVolume" type="FogVolume" parent="."]

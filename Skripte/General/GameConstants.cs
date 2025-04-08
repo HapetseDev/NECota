@@ -25,10 +25,21 @@ public partial class GameConstants : Node
 	// Animations
 	public const string ANIM_IDLE = "Idle";
 	public const string ANIM_MOVE = "Moving";
+	public const string ANIM_DASH = "Dash";
 	
 	//Input
 	public const string INPUT_MOVE_LEFT = "MoveLeft";
 	public const string INPUT_MOVE_RIGHT = "MoveRight";
 	public const string INPUT_MOVE_FORWARD = "MoveForward";
 	public const string INPUT_MOVE_BACKWARD = "MoveBackward";
+	public const string INPUT_DASH = "Dash";
+
+	// Notifications
+	public const int NOTIFICATION_ENTER_STATE = 5001;
+	public const int NOTIFICATION_EXIT_STATE = 5002;
+	public const int NOTIFICATION_ENTER_IDLE = 5003;
+	public const int NOTIFICATION_ENTER_MOVE = 5004;
+	public const int NOTIFICATION_ENTER_DASH = 5005;
+	public const int NOTIFICATION_ENTER_ATTACK = 5006;
+	public const int NOTIFICATION_ENTER_JUMP = 5007;
 }
